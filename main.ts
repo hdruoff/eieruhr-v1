@@ -25,34 +25,34 @@ basic.forever(function () {
     if (!(einstellmodus)) {
         vergangene_sek = input.runningTime() - start / 1000
         restzeit = zeit - vergangene_sek
-    }
-    if (restzeit <= 0) {
-        while (!(einstellmodus)) {
-            basic.showLeds(`
-                # . . . #
-                . # # # .
-                . . # . .
-                . # . # .
-                . . # . .
-                `)
-            for (let index = 0; index < 4; index++) {
-                music.playTone(392, music.beat(BeatFraction.Sixteenth))
-                music.rest(music.beat(BeatFraction.Sixteenth))
+        if (restzeit <= 0) {
+            while (!(einstellmodus)) {
                 basic.showLeds(`
-                    . # . # .
+                    # . . . #
                     . # # # .
                     . . # . .
                     . # . # .
                     . . # . .
                     `)
                 for (let index = 0; index < 4; index++) {
-                    music.playTone(523, music.beat(BeatFraction.Sixteenth))
+                    music.playTone(392, music.beat(BeatFraction.Sixteenth))
                     music.rest(music.beat(BeatFraction.Sixteenth))
+                    basic.showLeds(`
+                        . # . # .
+                        . # # # .
+                        . . # . .
+                        . # . # .
+                        . . # . .
+                        `)
+                    for (let index = 0; index < 4; index++) {
+                        music.playTone(523, music.beat(BeatFraction.Sixteenth))
+                        music.rest(music.beat(BeatFraction.Sixteenth))
+                    }
                 }
             }
+        } else {
+            basic.showNumber(restzeit)
         }
-    } else if (restzeit >= 0) {
-        basic.showNumber(restzeit)
     } else {
         vergangene_sek = 10
         while (einstellmodus) {
