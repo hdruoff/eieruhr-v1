@@ -7,9 +7,9 @@ input.onButtonPressed(Button.A, function () {
 input.onGesture(Gesture.Shake, function () {
     if (einstellmodus) {
         einstellmodus = false
-        einstellmodus = input.runningTime()
+        start = input.runningTime()
     } else {
-        start = true
+        einstellmodus = true
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -17,10 +17,10 @@ input.onButtonPressed(Button.B, function () {
 })
 let restzeit = 0
 let vergangene_sek = 0
-let einstellmodus = false
+let start = 0
 let zeit = 0
-let start = false
-start = true
+let einstellmodus = false
+einstellmodus = true
 basic.forever(function () {
     if (!(einstellmodus)) {
         vergangene_sek = input.runningTime() - start / 1000
